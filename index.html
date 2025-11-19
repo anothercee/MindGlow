@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EmoCare+ — Mental Health Companion</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>EmoCare+</h1>
+      <p class="tag">Support • Learn • Relax</p>
+    </div>
+    <nav class="nav">
+      <button data-tab="home" class="active">Home</button>
+      <button data-tab="checkin">Mood</button>
+      <button data-tab="edu">Edu-Guide</button>
+      <button data-tab="relax">Relax</button>
+      <button data-tab="game">Game</button>
+      <button data-tab="journal">Journal</button>
+      <button data-tab="quiz">Quiz</button>
+      <button data-tab="chat">Chat</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home" class="tabcontent">
+      <div class="grid">
+        <div class="card">
+          <h2>Welcome to EmoCare+</h2>
+          <p>Tools untuk cek emosi, relaksasi, edukasi, dan hiburan yang mendukung kesehatan mentalmu.</p>
+          <div class="quick">
+            <button id="btnGoCheck">Check Mood</button>
+            <button id="btnGoBreath">Breathing</button>
+            <button id="btnGoGame">Play Game</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Weekly Mood</h3>
+          <canvas id="moodChart" height="120"></canvas>
+        </div>
+
+        <div class="card">
+          <h3>Daily Tip</h3>
+          <p id="dailyTip">Memuat...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECK-IN / MOOD -->
+    <section id="checkin" class="tabcontent hidden">
+      <div class="card">
+        <h2>Mood Check-in</h2>
+        <p>Pilih moodmu sekarang</p>
+        <div class="mood-row">
+          <button class="mood-btn" data-mood="happy">😊 Senang</button>
+          <button class="mood-btn" data-mood="calm">😌 Tenang</button>
+          <button class="mood-btn" data-mood="sad">😢 Sedih</button>
+          <button class="mood-btn" data-mood="anxious">😰 Cemas</button>
+          <button class="mood-btn" data-mood="stressed">😫 Stres</button>
+        </div>
+
+        <hr/>
+
+        <h3>Write a quick note (optional)</h3>
+        <textarea id="moodNote" placeholder="Ceritakan sedikit tentang hari ini..."></textarea>
+        <div class="row">
+          <button id="saveMoodBtn">Simpan Check-in</button>
+          <button id="analyzeTextBtn">Analisis Teks</button>
+          <div id="textAnalysis" class="muted"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDU-GUIDE -->
+    <section id="edu" class="tabcontent hidden">
+      <div class="card">
+        <h2>Mental Health Edu-Guide</h2>
+        <div id="eduList"></div>
+      </div>
+    </section>
+
+    <!-- RELAX -->
+    <section id="relax" class="tabcontent hidden">
+      <div class="card">
+        <h2>Breathing Exercise</h2>
+        <div class="breath-controls">
+          <label>Duration:
+            <select id="breathDuration">
+              <option value="60">1 min</option>
+              <option value="180">3 min</option>
+            </select>
+          </label>
+          <button id="startBreath">Start</button>
+          <button id="stopBreath">Stop</button>
+        </div>
+        <div class="breath-area">
+          <div id="breathCircle" class="breath-circle"></div>
+          <p id="breathLabel">Ready</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Music Mood Therapy</h2>
+        <p>Pilih musik berdasarkan mood:</p>
+        <div class="music-row">
+          <button class="music-btn" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Calm</button>
+          <button class="music-btn" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Upbeat</button>
+          <button class="music-btn" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Nature</button>
+        </div>
+        <audio id="musicPlayer" controls preload="none"></audio>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="game" class="tabcontent hidden">
+      <div class="card">
+        <h2>Relax Games</h2>
+        <div class="game-row">
+          <button id="startBubble">Bubble Pop</button>
+          <button id="startMemory">Memory Match</button>
+        </div>
+        <div id="gameArea"></div>
+      </div>
+    </section>
+
+    <!-- JOURNAL -->
+    <section id="journal" class="tabcontent hidden">
+      <div class="card">
+        <h2>Mind Journal & Prompts</h2>
+        <div class="row">
+          <button id="genPrompt">Generate Prompt</button>
+          <span id="promptText" class="muted">Tekan untuk mendapatkan prompt menulis</span>
+        </div>
+        <textarea id="journalText" placeholder="Tuliskan jurnalmu di sini..."></textarea>
+        <div class="row">
+          <button id="saveJournal">Simpan Jurnal</button>
+          <button id="viewJournals">Lihat Jurnal</button>
+        </div>
+        <div id="journalsList"></div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="tabcontent hidden">
+      <div class="card">
+        <h2>Personality / Coping Quiz</h2>
+        <div id="quizArea">
+          <p id="quizQuestion">Tekan Start untuk memulai.</p>
+          <div id="quizOptions"></div>
+          <div class="row">
+            <button id="startQuiz">Start</button>
+            <button id="nextQuiz" class="hidden">Next</button>
+          </div>
+          <p id="quizResult" class="muted"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHATBOT -->
+    <section id="chat" class="tabcontent hidden">
+      <div class="card chat-card">
+        <h2>Support Chat (Simulasi)</h2>
+        <div id="chatWindow" class="chat-window"></div>
+        <div class="row">
+          <input id="chatInput" placeholder="Tulis ke chatbot (contoh: saya sedih)" />
+          <button id="sendChat">Kirim</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>EmoCare+ — Demo untuk kompetisi. Data disimpan lokal (no server).</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
