@@ -1,6 +1,6 @@
-# 🌟 EmoCare+ — Mood Support, Edukasi, dan Self-Care dalam Satu Aplikasi
+# 🌟 MindGlow — Mood Support, Edukasi, dan Self-Care dalam Satu Aplikasi
 
-**EmoCare+** adalah aplikasi web sederhana namun powerful yang dirancang untuk membantu pengguna memantau suasana hati, mempelajari edukasi psikologi ringan, dan menikmati fitur hiburan seperti mini game dan musik relaksasi. Aplikasi ini dirancang sebagai proyek yang menarik untuk lomba, tugas akhir, maupun portofolio.
+**MindGlow** adalah aplikasi web sederhana namun powerful yang dirancang untuk membantu pengguna memantau suasana hati, mempelajari edukasi psikologi ringan, dan menikmati fitur hiburan seperti mini game dan musik relaksasi. Aplikasi ini dirancang sebagai proyek yang menarik untuk lomba, tugas akhir, maupun portofolio.
 
 ---
 
