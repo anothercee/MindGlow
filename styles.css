@@ -1,0 +1,43 @@
+:root{
+  --bg:#F7FBF7;
+  --card:#FFFFFF;
+  --accent:#4CAF50;
+  --accent-2:#2E7D32;
+  --muted:#6b6b6b;
+  --radius:12px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#111;display:flex;flex-direction:column;min-height:100vh}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(90deg,#e8f5e9, #f1f8f1)}
+.brand h1{margin:0;color:var(--accent-2)}
+.brand .tag{margin:2px 0 0;color:var(--muted);font-size:13px}
+.nav button{margin-left:8px;padding:8px 10px;border-radius:8px;border:0;background:transparent;cursor:pointer}
+.nav button.active{background:var(--accent-2);color:white}
+.container{width:100%;max-width:1100px;margin:18px auto;padding:0 18px 80px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.muted{color:var(--muted)}
+.hidden{display:none}
+.row{display:flex;gap:8px;align-items:center;margin-top:10px}
+.quick button{margin-right:8px;padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+.mood-row{display:flex;gap:8px;flex-wrap:wrap}
+.mood-btn{padding:10px 12px;border-radius:10px;border:1px solid #eee;background:#f8fff8;cursor:pointer}
+.mood-btn:hover{transform:translateY(-2px)}
+textarea{width:100%;min-height:90px;padding:10px;border-radius:10px;border:1px solid #eee;margin-top:8px}
+.breath-area{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px}
+.breath-circle{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #E8F5E9,#C8E6C9);transition:all 0.45s ease}
+.breath-label{font-weight:600}
+.music-row button{margin-right:8px;padding:8px 12px;border-radius:8px;border:0;background:var(--accent-2);color:#fff;cursor:pointer}
+.game-row button{padding:8px 12px;border-radius:8px;border:0;background:#8bc34a;color:#fff}
+#gameArea{margin-top:12px}
+.chat-window{height:280px;overflow:auto;border:1px solid #eee;padding:8px;border-radius:8px;background:#fafafa}
+.chat-window .me{text-align:right}
+.chat-window .bot{color:#444}
+.prompt{background:#f1ffef;padding:10px;border-radius:8px}
+#journalsList{margin-top:10px}
+.footer{margin-top:auto;padding:12px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .nav{display:none}
+}
